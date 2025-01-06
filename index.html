@@ -353,34 +353,34 @@
                     Book <span>Demo</span>
                 </h1>
             </div>
-            <form class="mid">
+            <form class="mid" onsubmit="sendToWhatsApp(event)">
                 <div class="line1" id="line">
                     <span>My First name </span> 
-                    <input type="text" required placeholder="first name">
+                    <input type="text" id="firstName" required placeholder="first name">
                     <span> and Last name </span>
-                    <input type="text" required placeholder="last name">
+                    <input type="text" id="lastName" required placeholder="last name">
                     <span>.</span>
                 </div>
                 <div class="line2" id="line">
                     <span>Select Product </span> 
-                    <button>Product 1</button>
-                    <button>Product 2</button>
-                    <button>Product 3</button>
+                    <button type="button" onclick="selectProduct('Product 1')">Product 1</button>
+                    <button type="button" onclick="selectProduct('Product 2')">Product 2</button>
+                    <button type="button" onclick="selectProduct('Product 3')">Product 3</button>
                     <span>.</span>
                 </div>
                 <div class="line3" id="line">
                     <span>Please, contact me at </span> 
-                    <input type="email" required placeholder="name@example.com">
+                    <input type="email" id="email" required placeholder="name@example.com">
                     <span>.</span>
                 </div>
                 <div class="line4" id="line">
                     <span>Company Name </span> 
-                    <input type="text" required placeholder="XYZ Company">
+                    <input type="text" id="company" required placeholder="XYZ Company">
                     <span>.</span>
                 </div>
                 <div class="line5" id="line">
                     <button class="button" type="submit" value="submit">
-                        <a href="#">Send Request <i class="ri-arrow-right-line"></i> </a>
+                        Send Request <i class="ri-arrow-right-line"></i>
                     </button>
                 </div>
             </form>
@@ -424,6 +424,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.18.0/matter.min.js" integrity="sha512-5T245ZTH0m0RfONiFm2NF0zcYcmAuNzcGyPSQ18j8Bs5Pbfhp5HP1hosrR8XRt5M3kSRqzjNMYpm2+it/AUX/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery.ripples@0.6.3/dist/jquery.ripples.min.js"></script>
     <script src="script.js"></script>
+    <script src="whatsapp-contact.js"></script>
 
 </body>
 
