@@ -15,7 +15,7 @@ setInterval(() => {
   if (deferredPrompt) {
     installPopup.style.display = "block";
   }
-}, 10000); // 10 seconds
+}, 20000); // 20 seconds
 
 // Install button handler
 installBtn.addEventListener("click", () => {
