@@ -1,0 +1,16 @@
+{
+    "name": "Weber Motors",
+    "short_name": "Weber Motors",
+    "description": "Your destination for Robotics.",
+    "start_url": "/index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "icons": [
+        {
+            "src": "/assets/product.png",
+            "sizes": "682x682",
+            "type": "image/png"
+        }
+    ]
+}
