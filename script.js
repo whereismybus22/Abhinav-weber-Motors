@@ -5,18 +5,18 @@ function locomotive(){
     const locoScroll = new LocomotiveScroll({
         el: document.querySelector(".main"),
         smooth: true,
-        inertia: .6,
+        inertia: 1,
         getDirection: true,
         mobile: {
             breakpoint: 0,  
             smooth: true,
-            inertia: .9,
+            inertia: 1,
             getDirection: true,
         },
         tablet: {
             breakpoint: 0,  
             smooth: true,
-            inertia: 0.9,
+            inertia: 1,
             getDirection: true,
         },
     });
