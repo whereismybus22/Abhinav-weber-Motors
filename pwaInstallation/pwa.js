@@ -1,42 +1,42 @@
-let deferredPrompt;
-const installPopup = document.getElementById("installPopup");
-const installBtn = document.getElementById("installBtn");
-const cancelBtn = document.getElementById("cancelBtn");
+let deferredPrompt; // Holds the beforeinstallprompt event
 
-// Listen for the 'beforeinstallprompt' event and store the event for later use
-window.addEventListener("beforeinstallprompt", (e) => {
-  // Prevent the default install prompt from showing automatically
-  e.preventDefault();
-  deferredPrompt = e;
+// 1. Listen for the beforeinstallprompt event to detect the PWA installation eligibility
+window.addEventListener('beforeinstallprompt', (event) => {
+  // Prevent the default mini-infobar or install prompt
+  event.preventDefault();
+  
+  // Store the event so we can trigger it later
+  deferredPrompt = event;
+  
+  // Optionally, show an install button or some UI indicating that installation is possible
+  const installButton = document.getElementById('installButton');
+  installButton.style.display = 'block'; // Show the install button when prompt is available
 });
 
-// Show the pop-up every 20 seconds
-setInterval(() => {
+// 2. Define the installingPWA function
+function installingPWA() {
   if (deferredPrompt) {
-    installPopup.style.display = "block";
-  }
-}, 20000); // 20 seconds
-
-// Install button handler
-installBtn.addEventListener("click", () => {
-  if (deferredPrompt) {
-    // Show the install prompt
+    // Show the install prompt to the user
     deferredPrompt.prompt();
+    
     // Wait for the user to respond to the prompt
-    deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === "accepted") {
-        console.log("User accepted the install prompt");
-      } else {
-        console.log("User dismissed the install prompt");
-      }
-      // Reset the prompt and hide the pop-up
-      deferredPrompt = null;
-      installPopup.style.display = "none";
-    });
+    deferredPrompt.userChoice
+      .then((choiceResult) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the install prompt');
+        } else {
+          console.log('User dismissed the install prompt');
+        }
+        // Reset the deferredPrompt variable
+        deferredPrompt = null;
+      })
+      .catch((err) => {
+        console.error('Install prompt error:', err);
+      });
+  } else {
+    console.log('Install prompt not available');
   }
-});
+}
 
-// Cancel button handler
-cancelBtn.addEventListener("click", () => {
-  installPopup.style.display = "none";
-});
+// Example: Trigger installation when a button is clicked
+document.getElementById('installButton').addEventListener('click', installingPWA);
